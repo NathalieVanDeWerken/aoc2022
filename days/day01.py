@@ -13,7 +13,7 @@ def part_one(data):
     maximum = 0
     current = 0
     for x in data:
-        if len(x) == 0:
+        if x == '':
             maximum = max(current, maximum)
             current = 0
         else:
@@ -26,7 +26,7 @@ def part_two(data):
     all_elves = []
     current = 0
     for x in data:
-        if len(x) == 0:
+        if x == '':
             all_elves.append(current)
             current = 0
         else:
