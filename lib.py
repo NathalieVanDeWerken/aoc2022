@@ -6,7 +6,7 @@ from os.path import splitext, basename
 from pathlib import Path
 import requests
 
-YEAR = 2021
+YEAR = 2022
 ROOT_PATH = Path(__file__).parents[0]
 
 
@@ -50,39 +50,3 @@ def create_new_day():
 
 if __name__ == '__main__':
     create_new_day()
-
-import os
-
-
-def read_input_list_int(path):
-    path = os.path.dirname(os.getcwd()) + "/input/" + path
-    f = open(path)
-    data = []
-    for line in f:
-        data.append(int(line))
-    return data
-
-
-def read_input_list_line(path):
-    path = os.path.dirname(os.getcwd()) + "/input/" + path
-    f = open(path)
-    data = []
-    for line in f:
-        data.append(line.strip("\n"))
-    return data
-
-
-def read_input_list_single_line(path):
-    path = os.path.dirname(os.getcwd()) + "/input/" + path
-    f = open(path)
-    data = [int(x) for x in f.readline().strip("\n").split(',')]
-    return data
-
-
-def read_input_2d_array(path):
-    path = os.path.dirname(os.getcwd()) + "/input/" + path
-    f = open(path)
-    result = []
-    for line in f:
-        result.append([int(y) for y in line.strip("\n")])
-    return result

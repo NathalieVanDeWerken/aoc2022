@@ -10,7 +10,6 @@ def solve(data, part=1):
 
 
 def part_one(data):
-    print(data)
     pass
 
 
@@ -19,7 +18,7 @@ def part_two(data):
 
 
 if __name__ == "__main__":
-    # print(solve(load_input("small")))
-    print(solve(load_input()))
+    print(solve(load_input("small")))
+    # print(solve(load_input()))
     # print(solve(load_input("small")), 2)
     # print(solve(load_input()), 2)
