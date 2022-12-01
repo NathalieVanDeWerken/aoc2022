@@ -10,15 +10,32 @@ def solve(data, part=1):
 
 
 def part_one(data):
-    pass
+    maximum = 0
+    current = 0
+    for x in data:
+        if len(x) == 0:
+            maximum = max(current, maximum)
+            current = 0
+        else:
+            current += int(x)
+    maximum = max(current, maximum)
+    return maximum
 
 
 def part_two(data):
-    pass
-
+    all_elves = []
+    current = 0
+    for x in data:
+        if len(x) == 0:
+            all_elves.append(current)
+            current = 0
+        else:
+            current += int(x)
+    all_elves.append(current)
+    return sum(sorted(all_elves, reverse=True)[:3])
 
 if __name__ == "__main__":
     print(solve(load_input("small")))
     # print(solve(load_input()))
-    # print(solve(load_input("small")), 2)
-    # print(solve(load_input()), 2)
+    # print(solve(load_input("small"), 2))
+    # print(solve(load_input(), 2))
