@@ -1,5 +1,3 @@
-from curses.ascii import islower
-
 from lib import load_input
 
 
