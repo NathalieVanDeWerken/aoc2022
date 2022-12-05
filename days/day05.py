@@ -23,7 +23,7 @@ def part_one(data):
 def parse_data(data):
     raw_stacks, raw_operations = data.split("\n\n")
     raw_stacks = raw_stacks.split("\n")
-    number_of_stacks = int(raw_stacks[-1].split(" ")[-1])
+    number_of_stacks = int(raw_stacks[-1].strip().split(" ")[-1])
     stacks = []
 
     for _ in range(number_of_stacks):
