@@ -2,7 +2,7 @@ from lib import load_input
 
 
 def solve(data, part=1):
-    lines = [list(x) for x in data.splitlines()]
+    lines = [[int(y) for y in x] for x in data.splitlines()]
     if part == 1:
         return part_one(lines)
     elif part == 2:
@@ -26,10 +26,10 @@ def part_two(data):
     result = 0
     for x  in range(len(data)):
         for y in range(len(data[x])):
-            left =  y - next((index for index in range(y-1, -1, -1) if data[x][index] >= data[x][y]), 0)
-            right = next((index for index in range(y+1, len(data[x])) if data[x][index] >= data[x][y]), len(data) - 1) - y
-            up = x - next((index for index in range(x - 1, -1, -1) if data[index][y] >= data[x][y]), 0)
-            down = next((index for index in range(x+1, len(data)) if data[index][y] >= data[x][y]), len(data) - 1) - x
+            left =  y - next((index for index in range(y-1, 0, -1) if data[x][index] >= data[x][y]), 0)
+            right = next((index for index in range(y+1, len(data[x]) - 1) if data[x][index] >= data[x][y]), len(data) - 1) - y
+            up = x - next((index for index in range(x - 1, 0, -1) if data[index][y] >= data[x][y]), 0)
+            down = next((index for index in range(x+1, len(data) - 1) if data[index][y] >= data[x][y]), len(data) - 1) - x
             result = max(result, left * right * up * down)
     return result
 
