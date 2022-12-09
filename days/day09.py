@@ -27,9 +27,7 @@ def part_one(data):
 
 
 def part_two(data):
-    coords = []
-    for _ in range(10):
-        coords.append((0,0))
+    coords = [(0,0) for _ in range(10)]
     visited = set()
     visited.add(coords[9])
     for line in data:
