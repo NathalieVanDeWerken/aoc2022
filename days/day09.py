@@ -27,33 +27,19 @@ def part_one(data):
 
 
 def part_two(data):
-    head = (0,0)
-    knot1= (0,0)
-    knot2 = (0,0)
-    knot3 = (0,0)
-    knot4 = (0,0)
-    knot5 = (0,0)
-    knot6 = (0,0)
-    knot7 = (0,0)
-    knot8 = (0,0)
-    knot9 = (0,0)
+    coords = []
+    for _ in range(10):
+        coords.append((0,0))
     visited = set()
-    visited.add(knot9)
+    visited.add(coords[9])
     for line in data:
         direction, amount = line.split()
         amount = int(amount)
         for _ in range(amount):
-            head = move_head(direction, head)
-            knot1 = move_tail(head, knot1)
-            knot2 = move_tail(knot1, knot2)
-            knot3 = move_tail(knot2, knot3)
-            knot4 = move_tail(knot3, knot4)
-            knot5 = move_tail(knot4, knot5)
-            knot6 = move_tail(knot5, knot6)
-            knot7 = move_tail(knot6, knot7)
-            knot8 = move_tail(knot7, knot8)
-            knot9 = move_tail(knot8, knot9)
-            visited.add(knot9)
+            coords[0] = move_head(direction, coords[0])
+            for i in range(1,10):
+                coords[i] = move_tail(coords[i-1], coords[i])
+            visited.add(coords[9])
     return len(visited)
 
 def move_head(direction, head):
