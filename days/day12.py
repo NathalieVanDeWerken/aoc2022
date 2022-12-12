@@ -23,13 +23,13 @@ def find_starting_point(data):
     return None
 
 
-def can_visit(coor, old, data):
-    if 0 <= coor[0] < len(data) and 0 <= coor[1] < len(data[coor[0]]):
-        if data[coor[0]][coor[1]] == 'E':
+def can_visit(new, old, data):
+    if 0 <= new[0] < len(data) and 0 <= new[1] < len(data[new[0]]):
+        if data[new[0]][new[1]] == 'E':
             return data[old[0]][old[1]] == "y" or data[old[0]][old[1]] == "z"
         if data[old[0]][old[1]] == 'S':
-            return True
-        return ord(data[coor[0]][coor[1]]) - ord(data[old[0]][old[1]]) <= 1
+            return data[new[0]][new[1]] == "a" or data[new[0]][new[1]] == "b"
+        return ord(data[new[0]][new[1]]) - ord(data[old[0]][old[1]]) <= 1
     return False
 
 
