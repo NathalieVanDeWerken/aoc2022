@@ -10,29 +10,7 @@ def solve(data, part=1):
 
 
 def part_one(data):
-    floor = 0
-    ground = set()
-    for line in data:
-        line = [[int(y) for y in x.split(",")] for x in line.split(" -> ")]
-        init = line[0]
-        for next in line[1:]:
-            dx, dy = [el2 - el1 for(el1, el2) in zip(init, next)]
-            ground.add((init[0], init[1]))
-            if dx > 0:
-                for i in range(dx + 1):
-                    ground.add((init[0] + i, init[1]))
-            elif dx < 0:
-                for i in range(-dx + 1):
-                    ground.add((init[0] - i, init[1]))
-            elif dy > 0:
-                for i in range(dy + 1):
-                    ground.add((init[0], init[1] + i))
-            else:
-                for i in range(-dy + 1):
-                    ground.add((init[0], init[1] - i))
-            init = next
-    for x in ground:
-        floor = max(floor, x[1])
+    ground, floor = parse(data)
     result = 0
     while True:
         sand_coor_x = 500
@@ -53,9 +31,7 @@ def part_one(data):
 
                 return result
 
-
-
-def part_two(data):
+def parse(data):
     floor = 0
     ground = set()
     for line in data:
@@ -79,6 +55,10 @@ def part_two(data):
             init = next
     for x in ground:
         floor = max(floor, x[1])
+    return ground, floor
+
+def part_two(data):
+    ground, floor = parse(data)
     result = 0
     while True:
         sand_coor_x = 500
