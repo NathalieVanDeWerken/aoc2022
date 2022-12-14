@@ -38,18 +38,14 @@ def part_one(data):
         sand_coor_x = 500
         sand_coor_y = 0
         while True:
-            print(sand_coor_x, sand_coor_y)
             sand_coor_y += 1
             if (sand_coor_x, sand_coor_y) not in ground:
-                print("hey")
+                pass
             elif (sand_coor_x -1, sand_coor_y) not in ground:
-                print("hi")
                 sand_coor_x -= 1
             elif (sand_coor_x +1 , sand_coor_y) not in ground:
-                print("ho")
                 sand_coor_x += 1
             else:
-                print("no")
                 ground.add((sand_coor_x, sand_coor_y - 1))
                 result += 1
                 break
