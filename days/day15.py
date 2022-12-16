@@ -36,7 +36,6 @@ def part_one(data):
 def part_two(data):
     pattern = re.compile(
         r"""Sensor at x=(?P<x_sensor>.*?), y=(?P<y_sensor>.*?): closest beacon is at x=(?P<x_beacon>.*?), y=(?P<y_beacon>.*?)$""")
-    datas = []
     beacons = []
     sensors = []
     manhattan_distances = []
@@ -48,8 +47,7 @@ def part_two(data):
         beacons.append(beacon)
         sensors.append(sensor)
         manhattan_distances.append(manhattan_distance)
-        datas.append((sensor, beacon, manhattan_distance))
-    for cur in itertools.permutations(range(len(datas)), 4):
+    for cur in itertools.permutations(range(len(beacons)), 4):
         a = sensors[cur[0]][1] - manhattan_distances[cur[0]] - sensors[cur[0]][0]
         b = sensors[cur[1]][1] - sensors[cur[1]][0] + manhattan_distances[cur[1]]
         c = sensors[cur[2]][0] - manhattan_distances[cur[2]] + sensors[cur[2]][1]
